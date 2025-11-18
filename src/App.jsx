@@ -10,6 +10,12 @@ import carDetailingImage from './assets/Car Detailing Perfection.png'
 import fleetTruckImage from './assets/Fleet Truck Revival.png'
 import detailStudioImage from './assets/Detail Studio Interior.png'
 import trustedExpertsImage from './assets/Your Trusted Pressure Washing Experts.png'
+import semiTruckWash1 from './assets/semi truck wash.jpg'
+import semiTruckWash2 from './assets/semi truck wash 2.jpg'
+import semiTruckWash3 from './assets/semi truck wash 3.jpg'
+import drivewayImage from './assets/driveway.jpg'
+import carDetailingVideo1 from './assets/car detailing inside.mp4'
+import carDetailingVideo2 from './assets/car detailing inside 2.mp4'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -42,27 +48,40 @@ const serviceSpotlight = {
 
 const serviceCategories = [
   {
-    title: 'Fleet & Commercial Vehicle Washing',
-    subtitle: 'Semi Trucks, Trailers, Reefers, Buses & Commercial Vehicles',
-    description: 'Mobile pressure washing service for semi trucks, trailers, reefers, buses, box trucks, delivery vehicles, and all commercial fleets. We come to your yard or facility to keep your fleet inspection-ready and professional.',
-    tags: ['On-Site Service', 'DOT Inspection Ready', 'Fleet Contracts'],
-    badge: 'Most Popular',
-    image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=900',
+    title: 'Truck & Trailer Wash',
   },
   {
-    title: 'Commercial Property Washing',
-    subtitle: 'Loading Docks & Facilities',
-    description: 'Mobile pressure washing for loading docks, warehouse facilities, parking lots, and commercial properties. We come to your location with all equipment.',
-    tags: ['Loading Docks', 'Facility Cleaning', 'On-Site Service'],
-    image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900',
+    title: 'Car Wash',
   },
   {
-    title: 'Residential Mobile Washing',
-    subtitle: 'Homes & Driveways',
-    description: 'Mobile pressure washing for residential properties including house exteriors, driveways, patios, and outdoor surfaces. We bring our equipment to you.',
-    tags: ['House Washing', 'Driveway Cleaning', 'Mobile Service'],
-    image: 'https://images.unsplash.com/photo-1505692794400-5e0f0a4eb340?w=900',
+    title: 'Driveway Wash',
   },
+  {
+    title: 'Concrete Surface Cleaning',
+  },
+  {
+    title: 'Building Exterior Wash',
+  },
+  {
+    title: 'Heavy Equipment Wash',
+  },
+  {
+    title: 'Farm Equipment Wash',
+  },
+]
+
+const whyChooseUs = [
+  { text: 'Mobile convenience – we come to your location' },
+  { text: 'Professional-grade equipment & eco-safe cleaning' },
+  { text: 'Fast turnaround & friendly service' },
+  { text: 'Serving residential, commercial, and agricultural clients' },
+]
+
+const projectImages = [
+  { src: semiTruckWash1, title: 'Heavy Duty Fleet Washing' },
+  { src: drivewayImage, title: 'Residential Driveway Cleaning' },
+  { src: semiTruckWash2, title: 'Commercial Truck Care' },
+  { src: semiTruckWash3, title: 'Trailer & Equipment Wash' },
 ]
 
 const galleryItems = [
@@ -409,24 +428,125 @@ function App() {
       <section className="services" id="services">
         <div className="container">
           <div className="section-header" data-aos="fade-up">
-            <div className="services-logo">
-              <img src={logoImage} alt="GC Pressure Wash Services Logo" className="services-logo-image" />
-            </div>
             <span className="section-badge">Our Services</span>
             <h2 className="section-title">Complete Cleaning Solutions</h2>
             <p className="section-description">Professional pressure washing services tailored to your needs</p>
           </div>
-          <div className="services-grid-simple">
-            {serviceCategories.map((service, index) => (
-              <div className="service-item-simple" key={service.title} data-aos="fade-up" data-aos-delay={index * 50}>
-                <div className="service-bullet">
-                  <i className="fa-solid fa-check"></i>
+          
+          <div className="services-content-wrapper">
+            <div className="services-image-column" data-aos="fade-right">
+              <div className="services-logo-container">
+                <img src={logoImage} alt="GC Pressure Wash Services Logo" className="services-logo-large" />
+              </div>
+            </div>
+            
+            <div className="services-list-column" data-aos="fade-left">
+              <div className="services-grid-simple">
+                {serviceCategories.map((service, index) => (
+                  <div className="service-item-simple" key={service.title}>
+                    <div className="service-bullet">
+                      <i className="fa-solid fa-check"></i>
+                    </div>
+                    <div className="service-name-wrapper">
+                      <h3 className="service-name">{service.title}</h3>
+                      {service.subtitle && <span className="service-subtitle">{service.subtitle}</span>}
+                    </div>
+                    {service.badge && <span className="service-badge-simple">{service.badge}</span>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="why-choose-us">
+        <div className="container">
+          <div className="section-header" data-aos="fade-up">
+            <span className="section-badge">Why Choose Us?</span>
+            <h2 className="section-title">What Makes Us Different</h2>
+            <p className="section-description">Experience the GC Mobile Pressure Wash difference</p>
+          </div>
+          <div className="why-choose-grid">
+            {whyChooseUs.map((item, index) => (
+              <div className="why-choose-item" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+                <div className="why-choose-icon">
+                  <i className="fa-solid fa-circle-check"></i>
                 </div>
-                <div className="service-name-wrapper">
-                  <h3 className="service-name">{service.title}</h3>
-                  {service.subtitle && <span className="service-subtitle">{service.subtitle}</span>}
+                <p className="why-choose-text">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="video-showcase">
+        <div className="container">
+          <div className="section-header" data-aos="fade-up">
+            <span className="section-badge">In Action</span>
+            <h2 className="section-title">Watch Us Work</h2>
+            <p className="section-description">Precision detailing and deep cleaning in action</p>
+          </div>
+          <div className="video-rows">
+            {/* First Video Row: Video Left, Text Right */}
+            <div className="video-row" data-aos="fade-up">
+              <div className="video-wrapper video-faded-border">
+                <video autoPlay loop muted playsInline>
+                  <source src={carDetailingVideo1} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="video-text-content">
+                <h3>Interior Deep Clean</h3>
+                <p>
+                  Experience the difference of our deep cleaning process. We go beyond surface-level cleaning to remove deep-seated dirt, allergens, and odors, restoring comfort and hygiene to your vehicle's interior.
+                </p>
+                <ul className="video-features">
+                  <li><i className="fa-solid fa-check"></i> Deep stain removal</li>
+                  <li><i className="fa-solid fa-check"></i> Odor elimination</li>
+                  <li><i className="fa-solid fa-check"></i> Fabric protection</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Second Video Row: Text Left, Video Right */}
+            <div className="video-row reverse" data-aos="fade-up">
+              <div className="video-text-content">
+                <h3>Precision Detailing</h3>
+                <p>
+                  Our attention to detail is unmatched. Every corner, crevice, and vent is meticulously cleaned and conditioned. We treat your vehicle with the care it deserves, ensuring a showroom-quality finish.
+                </p>
+                <ul className="video-features">
+                  <li><i className="fa-solid fa-check"></i> Vent & dash cleaning</li>
+                  <li><i className="fa-solid fa-check"></i> Leather conditioning</li>
+                  <li><i className="fa-solid fa-check"></i> Premium finish products</li>
+                </ul>
+              </div>
+              <div className="video-wrapper video-faded-border">
+                <video autoPlay loop muted playsInline>
+                  <source src={carDetailingVideo2} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="recent-projects">
+        <div className="container">
+          <div className="section-header" data-aos="fade-up">
+            <span className="section-badge">Portfolio</span>
+            <h2 className="section-title">Recent Projects</h2>
+            <p className="section-description">A look at our latest heavy duty and residential work</p>
+          </div>
+          <div className="projects-grid">
+            {projectImages.map((project, index) => (
+              <div className="project-item" key={index} data-aos="zoom-in" data-aos-delay={index * 100}>
+                <img src={project.src} alt={project.title} />
+                <div className="project-overlay">
+                  <h3>{project.title}</h3>
                 </div>
-                {service.badge && <span className="service-badge-simple">{service.badge}</span>}
               </div>
             ))}
           </div>
@@ -593,7 +713,7 @@ function App() {
         </div>
       </section>
 
-      <section className="cta-section">
+      <section className="cta-section" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('${semiTruckWash1}')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
         <div className="container">
           <div className="cta-wrapper" data-aos="zoom-in">
             <div className="cta-content">
