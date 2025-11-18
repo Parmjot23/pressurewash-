@@ -1,6 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import logoImage from './assets/logo.jpg'
+import heroImage from './assets/image.png'
+import concreteDrivewayImage from './assets/Concrete driveway.png'
+import houseExteriorImage from './assets/House Exterior Cleaning.png'
+import deckRestorationImage from './assets/Deck Restoration.png'
+import commercialPropertyImage from './assets/Commercial Property.png'
+import carDetailingImage from './assets/Car Detailing Perfection.png'
+import fleetTruckImage from './assets/Fleet Truck Revival.png'
+import detailStudioImage from './assets/Detail Studio Interior.png'
+import trustedExpertsImage from './assets/Your Trusted Pressure Washing Experts.png'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -33,99 +42,65 @@ const serviceSpotlight = {
 
 const serviceCategories = [
   {
-    title: 'Car Wash Studio',
-    subtitle: 'Luxury Auto Detailing',
-    description: 'Two-bucket foam bath, paint-safe rinse, wheel & tire revitalization, and interior refresh add-ons.',
-    tags: ['Ceramic Lite', 'Pet Hair Reset', 'Rain Repellent'],
-    badge: 'Detail Lab',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900',
-  },
-  {
-    title: 'Commercial Truck Wash',
-    subtitle: 'Fleet Rinse Systems',
-    description: 'Oversized bays + mobile gantry units for semis, reefers, buses, and municipal fleets.',
-    tags: ['Undercarriage Flush', 'DOT Inspection Prep', 'Anti-ice Coat'],
-    badge: 'Fleet Ready',
+    title: 'Fleet & Commercial Vehicle Washing',
+    subtitle: 'Semi Trucks, Trailers, Reefers, Buses & Commercial Vehicles',
+    description: 'Mobile pressure washing service for semi trucks, trailers, reefers, buses, box trucks, delivery vehicles, and all commercial fleets. We come to your yard or facility to keep your fleet inspection-ready and professional.',
+    tags: ['On-Site Service', 'DOT Inspection Ready', 'Fleet Contracts'],
+    badge: 'Most Popular',
     image: 'https://images.unsplash.com/photo-1502877338535-766e1452684a?w=900',
   },
   {
-    title: 'Fleet Detailing & Protection',
-    subtitle: 'On-Site Finishing',
-    description: 'Vinyl wrap safe polishing, interior sanitation, and quarterly protective coatings.',
-    tags: ['Vinyl Safe', 'Odor Neutral', 'Multi-unit Scheduling'],
-    image: 'https://images.unsplash.com/photo-1514315384763-ba401779410f?w=900',
-  },
-  {
-    title: 'Residential Soft Wash',
-    subtitle: 'Siding & Outdoor Living',
-    description: 'Gentle low-pressure wash for siding, patios, pool decks, screened enclosures, and pergolas.',
-    tags: ['Plants Shielded', 'Pet Friendly', 'Same-Day Dry'],
-    image: 'https://images.unsplash.com/photo-1505692794400-5e0f0a4eb340?w=900',
-  },
-  {
-    title: 'Concrete & Surface Renewal',
-    subtitle: 'Driveways & Docks',
-    description: 'Hot water surface cleaning for driveways, walkways, loading docks, and retail plazas.',
-    tags: ['Oil Lift', 'Gum Vapor', 'Line-Stripe Safe'],
+    title: 'Commercial Property Washing',
+    subtitle: 'Loading Docks & Facilities',
+    description: 'Mobile pressure washing for loading docks, warehouse facilities, parking lots, and commercial properties. We come to your location with all equipment.',
+    tags: ['Loading Docks', 'Facility Cleaning', 'On-Site Service'],
     image: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=900',
   },
   {
-    title: 'Roof & Gutter Revival',
-    subtitle: 'Shingle & Metal Safe',
-    description: 'Soft wash roof treatments, gutter whitening, moss removal, and brightening for fascia/soffits.',
-    tags: ['Soft Wash', 'Warranty Safe', 'Drone Inspection'],
-    image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900',
+    title: 'Residential Mobile Washing',
+    subtitle: 'Homes & Driveways',
+    description: 'Mobile pressure washing for residential properties including house exteriors, driveways, patios, and outdoor surfaces. We bring our equipment to you.',
+    tags: ['House Washing', 'Driveway Cleaning', 'Mobile Service'],
+    image: 'https://images.unsplash.com/photo-1505692794400-5e0f0a4eb340?w=900',
   },
 ]
 
 const galleryItems = [
   {
-    before: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800',
-    after: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800',
+    before: concreteDrivewayImage,
+    after: concreteDrivewayImage,
     title: 'Driveway Restoration',
     subtitle: 'Complete transformation in just 2 hours',
   },
   {
-    before: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800',
-    after: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800',
+    before: houseExteriorImage,
+    after: houseExteriorImage,
     title: 'House Exterior Cleaning',
     subtitle: 'Soft wash technique for safe cleaning',
   },
   {
-    before: 'https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800',
-    after: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
+    before: deckRestorationImage,
+    after: deckRestorationImage,
     title: 'Deck Restoration',
     subtitle: 'Wood brought back to life',
   },
   {
-    before: 'https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?w=800',
-    after: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800',
+    before: commercialPropertyImage,
+    after: commercialPropertyImage,
     title: 'Commercial Property',
     subtitle: 'Professional results every time',
   },
   {
-    before: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800',
-    after: 'https://images.unsplash.com/photo-1493238792000-8113da705763?w=800',
+    before: detailStudioImage,
+    after: detailStudioImage,
     title: 'Car Detailing Perfection',
     subtitle: 'Paint depth restored with mirror finish',
   },
   {
-    before: 'https://images.unsplash.com/photo-1477414348463-c0eb7f1359b6?w=800',
-    after: 'https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=800',
+    before: fleetTruckImage,
+    after: fleetTruckImage,
     title: 'Fleet Truck Revival',
     subtitle: 'Road grime removed, fleet-ready shine',
-  },
-  {
-    before: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800',
-    after: 'https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?w=800',
-    title: 'Detail Studio Interior',
-    subtitle: 'Interior detailing, spotless + sanitized',
-  },
-  {
-    before: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800',
-    after: 'https://images.unsplash.com/photo-1493238792000-8113da705763?w=800',
-    title: 'Luxury Coupe Detail',
-    subtitle: 'Ceramic protection + wheel polish',
   },
 ]
 
@@ -214,8 +189,9 @@ function App() {
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [testimonialIndex, setTestimonialIndex] = useState(0)
   const [visibleTestimonials, setVisibleTestimonials] = useState(1)
+  const [cardWidth, setCardWidth] = useState(0)
   const testimonialTrackRef = useRef(null)
-  const topBarRef = useRef(null)
+  const testimonialSliderRef = useRef(null)
   const navRef = useRef(null)
   const navMenuRef = useRef(null)
   const hamburgerRef = useRef(null)
@@ -226,19 +202,22 @@ function App() {
   }, [menuOpen])
 
   useEffect(() => {
-    const determineVisible = () => {
-      if (window.innerWidth >= 1200) return 3
-      if (window.innerWidth >= 820) return 2
-      return 1
+    // Always show one testimonial at a time
+    setVisibleTestimonials(1)
+    
+    // Calculate card width for transform
+    const updateCardWidth = () => {
+      if (testimonialSliderRef.current) {
+        const sliderWidth = testimonialSliderRef.current.offsetWidth
+        // Slider has padding: 0 20px, so card width is sliderWidth - 40px
+        const cardWidthValue = sliderWidth - 40
+        setCardWidth(cardWidthValue)
+      }
     }
-    const updateVisible = () => {
-      const value = determineVisible()
-      setVisibleTestimonials(value)
-      setTestimonialIndex((prev) => Math.min(prev, Math.max(testimonials.length - value, 0)))
-    }
-    updateVisible()
-    window.addEventListener('resize', updateVisible)
-    return () => window.removeEventListener('resize', updateVisible)
+    
+    updateCardWidth()
+    window.addEventListener('resize', updateCardWidth)
+    return () => window.removeEventListener('resize', updateCardWidth)
   }, [])
 
   useEffect(() => {
@@ -251,20 +230,6 @@ function App() {
         else navRef.current.classList.remove('scrolled')
       }
 
-      if (topBarRef.current && navRef.current) {
-        if (scrollTop > 120) {
-          if (scrollTop > lastScrollTop) {
-            topBarRef.current.classList.add('hidden')
-            navRef.current.classList.add('top-bar-hidden')
-          } else {
-            topBarRef.current.classList.remove('hidden')
-            navRef.current.classList.remove('top-bar-hidden')
-          }
-        } else {
-          topBarRef.current.classList.remove('hidden')
-          navRef.current.classList.remove('top-bar-hidden')
-        }
-      }
 
       setShowBackToTop(scrollTop > 500)
 
@@ -357,32 +322,6 @@ function App() {
 
   return (
     <>
-      <div className="top-bar" ref={topBarRef}>
-        <div className="container">
-          <div className="top-bar-wrapper">
-            <div className="top-bar-left">
-              <div className="top-bar-item">
-                <i className="fa-solid fa-clock"></i>
-                <span>Mon-Sat: 7AM-7PM | Sun: 9AM-5PM</span>
-              </div>
-              <div className="top-bar-item">
-                <i className="fa-solid fa-location-dot"></i>
-                <span>Serving Your Area</span>
-              </div>
-            </div>
-            <div className="top-bar-right">
-              <div className="top-bar-social">
-                {socialLinks.slice(0, 4).map((social) => (
-                  <a key={social.label} href={social.href} className="social-icon" aria-label={social.label}>
-                    <i className={social.icon}></i>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <nav className="navbar" id="navbar" ref={navRef}>
         <div className="container">
           <div className="nav-wrapper">
@@ -427,27 +366,25 @@ function App() {
       </nav>
 
       <section className="brand-highlight" id="home">
-        <div className="container">
-          <div className="brand-card" data-aos="zoom-in">
-            <div className="brand-logo-frame">
-              <img src={logoImage} alt="GC Pressure Wash Services Logo" className="brand-logo" />
-            </div>
-            <div className="brand-caption">
-              <p>
-                Family-owned, detail obsessed, and trusted across residential, fleet, and commercial properties. We bring showroom-level clarity
-                to every surface we touch.
-              </p>
-              <div className="brand-tags">
-                <span>
-                  <i className="fa-solid fa-city"></i> Urban &amp; Retail Sites
-                </span>
-                <span>
-                  <i className="fa-solid fa-truck-fast"></i> Fleet &amp; Heavy Duty
-                </span>
-                <span>
-                  <i className="fa-solid fa-house"></i> Luxury Residential
-                </span>
-              </div>
+        <div className="hero-image-container">
+          <img src={heroImage} alt="Mobile Pressure Washing" className="hero-main-image" />
+        </div>
+        <div className="brand-hero-wrapper">
+          <div className="brand-caption">
+            <p>
+              Family-owned, detail obsessed, and trusted across residential, fleet, and commercial properties. We bring showroom-level clarity
+              to every surface we touch.
+            </p>
+            <div className="brand-tags">
+              <span>
+                <i className="fa-solid fa-city"></i> Urban &amp; Retail Sites
+              </span>
+              <span>
+                <i className="fa-solid fa-truck-fast"></i> Fleet &amp; Heavy Duty
+              </span>
+              <span>
+                <i className="fa-solid fa-house"></i> Luxury Residential
+              </span>
             </div>
           </div>
         </div>
@@ -472,41 +409,26 @@ function App() {
       <section className="services" id="services">
         <div className="container">
           <div className="section-header" data-aos="fade-up">
+            <div className="services-logo">
+              <img src={logoImage} alt="GC Pressure Wash Services Logo" className="services-logo-image" />
+            </div>
             <span className="section-badge">Our Services</span>
             <h2 className="section-title">Complete Cleaning Solutions</h2>
             <p className="section-description">Professional pressure washing services tailored to your needs</p>
           </div>
-          <div className="services-layout services-single">
-            <div className="service-collection services-wide">
-              {serviceCategories.map((service, index) => (
-                <article className="service-row" key={service.title} data-aos="fade-up" data-aos-delay={index * 90}>
-                  <div className="service-row-media">
-                    <img src={service.image} alt={service.title} />
-                    {service.badge && <span className="service-chip">{service.badge}</span>}
-                  </div>
-                  <div className="service-row-text">
-                    <div className="service-row-header">
-                      <div>
-                        <h3>{service.title}</h3>
-                        {service.subtitle && <p className="service-row-subtitle">{service.subtitle}</p>}
-                      </div>
-                    </div>
-                    <p>{service.description}</p>
-                  </div>
-                  <div className="service-tags">
-                    {service.tags.map((tag) => (
-                      <span className="tag-pill" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <button className="service-link" type="button" onClick={handleQuoteClick}>
-                    <span>Book {service.title}</span>
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </button>
-                </article>
-              ))}
-            </div>
+          <div className="services-grid-simple">
+            {serviceCategories.map((service, index) => (
+              <div className="service-item-simple" key={service.title} data-aos="fade-up" data-aos-delay={index * 50}>
+                <div className="service-bullet">
+                  <i className="fa-solid fa-check"></i>
+                </div>
+                <div className="service-name-wrapper">
+                  <h3 className="service-name">{service.title}</h3>
+                  {service.subtitle && <span className="service-subtitle">{service.subtitle}</span>}
+                </div>
+                {service.badge && <span className="service-badge-simple">{service.badge}</span>}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -551,7 +473,7 @@ function App() {
         <div className="container">
           <div className="about-wrapper">
             <div className="about-image" data-aos="fade-right">
-              <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200" alt="Professional team" />
+              <img src={trustedExpertsImage} alt="Professional team" />
               <div className="about-badge">
                 <div className="badge-content">
                   <h3>15+</h3>
@@ -589,21 +511,6 @@ function App() {
         </div>
       </section>
 
-      <section className="video-section">
-        <div className="container">
-          <div className="video-wrapper" data-aos="zoom-in">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200" alt="Video thumbnail" />
-            <button className="play-button" type="button" onClick={handleQuoteClick}>
-              <i className="fa-solid fa-play"></i>
-            </button>
-            <div className="video-overlay">
-              <h3>Watch How We Transform Properties</h3>
-              <p>See our process in action</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="process">
         <div className="container">
           <div className="section-header" data-aos="fade-up">
@@ -633,11 +540,11 @@ function App() {
             <h2 className="section-title">What Our Clients Say</h2>
             <p className="section-description">Don&apos;t just take our word for it</p>
           </div>
-          <div className="testimonials-slider">
+          <div className="testimonials-slider" ref={testimonialSliderRef}>
             <div
               className="testimonial-track"
               ref={testimonialTrackRef}
-              style={{ transform: `translateX(-${testimonialIndex * 370}px)` }}
+              style={{ transform: cardWidth > 0 ? `translateX(-${testimonialIndex * cardWidth}px)` : 'translateX(0)' }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
@@ -786,20 +693,6 @@ function App() {
         <div className="container">
           <div className="footer-content">
             <div className="footer-column">
-              <div className="footer-logo">
-                <img src={logoImage} alt="GC Pressure Wash Services Logo" className="logo-image" />
-                <span>GC Pressure Wash <span className="highlight">Services</span></span>
-              </div>
-              <p>Your trusted partner for professional pressure washing services. We bring new life to your property with expert cleaning solutions.</p>
-              <div className="footer-social">
-                {socialLinks.slice(0, 4).map((social) => (
-                  <a key={social.label} href={social.href} aria-label={social.label}>
-                    <i className={social.icon}></i>
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div className="footer-column">
               <h4>Quick Links</h4>
               <ul>
                 {navLinks.map((link) => (
@@ -824,17 +717,22 @@ function App() {
               </ul>
             </div>
             <div className="footer-column">
-              <h4>Newsletter</h4>
-              <p>Subscribe to get special offers and updates.</p>
-              <form className="newsletter-form">
-                <input type="email" placeholder="Your email address" required />
-                <button type="submit">
-                  <i className="fa-solid fa-arrow-right"></i>
-                </button>
-              </form>
-              <div className="footer-certifications">
-                <img src="https://via.placeholder.com/80x40/4CAF50/ffffff?text=Licensed" alt="Licensed" />
-                <img src="https://via.placeholder.com/80x40/2196F3/ffffff?text=Insured" alt="Insured" />
+              <h4>Contact</h4>
+              <ul>
+                <li>
+                  <a href="tel:+1234567890">(123) 456-7890</a>
+                </li>
+                <li>
+                  <a href="mailto:info@gcpressurewash.com">info@gcpressurewash.com</a>
+                </li>
+                <li>123 Main Street, Your City, ST 12345</li>
+              </ul>
+              <div className="footer-social" style={{ marginTop: '1.5rem' }}>
+                {socialLinks.slice(0, 4).map((social) => (
+                  <a key={social.label} href={social.href} aria-label={social.label}>
+                    <i className={social.icon}></i>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
