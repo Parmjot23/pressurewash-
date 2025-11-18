@@ -14,8 +14,6 @@ import semiTruckWash1 from './assets/semi truck wash.jpg'
 import semiTruckWash2 from './assets/semi truck wash 2.jpg'
 import semiTruckWash3 from './assets/semi truck wash 3.jpg'
 import drivewayImage from './assets/driveway.jpg'
-import carDetailingVideo1 from './assets/car detailing inside.mp4'
-import carDetailingVideo2 from './assets/car detailing inside 2.mp4'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -78,10 +76,30 @@ const whyChooseUs = [
 ]
 
 const projectImages = [
-  { src: semiTruckWash1, title: 'Heavy Duty Fleet Washing' },
-  { src: drivewayImage, title: 'Residential Driveway Cleaning' },
-  { src: semiTruckWash2, title: 'Commercial Truck Care' },
-  { src: semiTruckWash3, title: 'Trailer & Equipment Wash' },
+  { 
+    src: semiTruckWash1, 
+    title: 'Heavy Duty Fleet Washing',
+    description: 'Our heavy-duty fleet washing service ensures your commercial vehicles remain in pristine condition. We use specialized industrial-grade cleaning agents to remove road grime, grease, and oil without damaging the paint or decals.',
+    features: ['Degreasing & bug removal', 'Aluminum brightening', 'Undercarriage wash']
+  },
+  { 
+    src: drivewayImage, 
+    title: 'Commercial Cleaning Job',
+    description: 'First impressions matter for your business. Our commercial surface cleaning restores the look of your walkways, parking lots, and entryways. We remove gum, oil stains, and organic buildup to create a welcoming environment for your customers.',
+    features: ['Oil stain removal', 'Gum removal', 'High-traffic area cleaning']
+  },
+  { 
+    src: semiTruckWash2, 
+    title: 'Commercial Truck Care',
+    description: 'Regular maintenance washing for commercial trucks extends the life of your fleet. We provide reliable, scheduled cleaning services that keep your trucks looking professional and compliant with DOT inspections.',
+    features: ['Scheduled maintenance', 'Mirror & glass polishing', 'Cab exterior detailing']
+  },
+  { 
+    src: semiTruckWash3, 
+    title: 'Trailer & Equipment Wash',
+    description: 'From reefers to flatbeds and heavy machinery, we have the capability to clean it all. Our mobile units are equipped with hot water systems to tackle the toughest mud and clay on construction equipment and trailers.',
+    features: ['Heavy equipment degreasing', 'Trailer washout', 'Sanitization services']
+  },
 ]
 
 const galleryItems = [
@@ -209,6 +227,7 @@ function App() {
   const [testimonialIndex, setTestimonialIndex] = useState(0)
   const [visibleTestimonials, setVisibleTestimonials] = useState(1)
   const [cardWidth, setCardWidth] = useState(0)
+  const [lightboxImage, setLightboxImage] = useState(null)
   const testimonialTrackRef = useRef(null)
   const testimonialSliderRef = useRef(null)
   const navRef = useRef(null)
@@ -491,10 +510,15 @@ function App() {
             {/* First Video Row: Video Left, Text Right */}
             <div className="video-row" data-aos="fade-up">
               <div className="video-wrapper video-faded-border">
-                <video autoPlay loop muted playsInline>
-                  <source src={carDetailingVideo1} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe 
+                  width="560" 
+                  height="315" 
+                  src="https://www.youtube.com/embed/XmLCH2vrb94?autoplay=1&mute=1&loop=1&playlist=XmLCH2vrb94&controls=1" 
+                  title="Interior Deep Clean" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerPolicy="strict-origin-when-cross-origin" 
+                  allowFullScreen
+                ></iframe>
               </div>
               <div className="video-text-content">
                 <h3>Interior Deep Clean</h3>
@@ -523,10 +547,15 @@ function App() {
                 </ul>
               </div>
               <div className="video-wrapper video-faded-border">
-                <video autoPlay loop muted playsInline>
-                  <source src={carDetailingVideo2} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe 
+                  width="560" 
+                  height="315" 
+                  src="https://www.youtube.com/embed/_db5PFALSC4?autoplay=1&mute=1&loop=1&playlist=_db5PFALSC4&controls=1" 
+                  title="Precision Detailing" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerPolicy="strict-origin-when-cross-origin" 
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
           </div>
@@ -540,18 +569,42 @@ function App() {
             <h2 className="section-title">Recent Projects</h2>
             <p className="section-description">A look at our latest heavy duty and residential work</p>
           </div>
-          <div className="projects-grid">
+          <div className="projects-list">
             {projectImages.map((project, index) => (
-              <div className="project-item" key={index} data-aos="zoom-in" data-aos-delay={index * 100}>
-                <img src={project.src} alt={project.title} />
-                <div className="project-overlay">
+              <div className={`project-row ${index % 2 !== 0 ? 'reverse' : ''}`} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+                <div className="project-image-wrapper video-faded-border" onClick={() => setLightboxImage(project.src)}>
+                  <img src={project.src} alt={project.title} />
+                  <div className="project-zoom-icon">
+                    <i className="fa-solid fa-magnifying-glass-plus"></i>
+                  </div>
+                </div>
+                <div className="project-content">
                   <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  {project.features && (
+                    <ul className="project-features">
+                      {project.features.map((feature, i) => (
+                        <li key={i}><i className="fa-solid fa-check"></i> {feature}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {lightboxImage && (
+        <div className="lightbox" onClick={() => setLightboxImage(null)}>
+          <div className="lightbox-content" onClick={e => e.stopPropagation()}>
+            <img src={lightboxImage} alt="Full screen view" />
+            <button className="lightbox-close" onClick={() => setLightboxImage(null)}>
+              <i className="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+      )}
 
       <section className="gallery" id="gallery">
         <div className="container">
