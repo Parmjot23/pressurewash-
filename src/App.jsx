@@ -48,43 +48,57 @@ const serviceCategories = [
     title: 'Truck & Trailer Wash',
     description: 'Comprehensive exterior cleaning for semi-trucks and trailers, removing road grime and salt.',
     message: 'Hi, I would like to book a Truck & Trailer Wash service.',
-    image: fleetTruckImage
+    image: fleetTruckImage,
+    tagline: 'Fleet-Grade Finish',
+    duration: '120 min avg'
   },
   {
     title: 'Car Wash',
     description: 'Professional mobile car wash service at your location for a showroom shine.',
     message: 'Hi, I would like to book a Car Wash service.',
-    image: carDetailingImage
+    image: carDetailingImage,
+    tagline: 'Mobile Detailers',
+    duration: '60 min avg'
   },
   {
     title: 'Driveway Wash',
     description: 'High-pressure cleaning to remove oil stains, tire marks, and dirt from your driveway.',
     message: 'Hi, I would like to book a Driveway Wash service.',
-    image: concreteDrivewayImage
+    image: concreteDrivewayImage,
+    tagline: 'Surface Renewal',
+    duration: '90 min avg'
   },
   {
     title: 'Concrete Surface Cleaning',
     description: 'Deep cleaning for patios, walkways, and other concrete surfaces to restore their look.',
     message: 'Hi, I would like to book a Concrete Surface Cleaning service.',
-    image: commercialPropertyImage
+    image: commercialPropertyImage,
+    tagline: 'Commercial Shine',
+    duration: 'Fast turnaround'
   },
   {
     title: 'Building Exterior Wash',
     description: 'Soft wash and pressure wash techniques to clean siding, brick, and stucco exteriors.',
     message: 'Hi, I would like to book a Building Exterior Wash service.',
-    image: houseExteriorImage
+    image: houseExteriorImage,
+    tagline: 'Soft Wash Safe',
+    duration: 'Half-day service'
   },
   {
     title: 'Heavy Equipment Wash',
     description: 'Specialized cleaning for construction and industrial machinery to maintain performance.',
     message: 'Hi, I would like to book a Heavy Equipment Wash service.',
-    image: 'https://images.unsplash.com/photo-1584650549334-6cc0243056ef?w=800'
+    image: 'https://images.unsplash.com/photo-1584650549334-6cc0243056ef?w=800',
+    tagline: 'Degrease & Protect',
+    duration: 'Project-based'
   },
   {
     title: 'Farm Equipment Wash',
     description: 'On-site washing for tractors, combines, and other agricultural equipment.',
     message: 'Hi, I would like to book a Farm Equipment Wash service.',
-    image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800'
+    image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800',
+    tagline: 'Field-Ready Clean',
+    duration: 'On-site visit'
   },
 ]
 
@@ -505,15 +519,26 @@ function App() {
               <div className="services-grid-cards">
                 {serviceCategories.map((service, index) => (
                   <div className="service-card" key={service.title}>
-                    <div className="service-card-image">
+                    <div className="service-card-media">
                       <img src={service.image} alt={service.title} />
+                      <span className="service-card-index">{String(index + 1).padStart(2, '0')}</span>
                     </div>
-                    <div className="service-card-content">
+                    <div className="service-card-body">
+                      <div className="service-card-meta">
+                        <span className="service-card-pill">{service.tagline}</span>
+                      </div>
                       <h3 className="service-name">{service.title}</h3>
                       <p className="service-desc-text">{service.description}</p>
-                      <button className="btn-book-now btn-whatsapp" onClick={() => handleBookNow(service.message)}>
-                        <i className="fa-brands fa-whatsapp"></i> Book via WhatsApp
-                      </button>
+                      <div className="service-card-footer">
+                        <span className="service-duration">
+                          <i className="fa-regular fa-clock"></i>
+                          {service.duration}
+                        </span>
+                        <button className="btn-book-now btn-whatsapp" onClick={() => handleBookNow(service.message)}>
+                          <i className="fa-brands fa-whatsapp"></i>
+                          Book via WhatsApp
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
