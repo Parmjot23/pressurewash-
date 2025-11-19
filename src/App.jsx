@@ -363,7 +363,9 @@ function App() {
       <nav className="navbar" id="navbar" ref={navRef}>
         <div className="container">
           <div className="nav-wrapper">
-            <div className="nav-placeholder" aria-hidden="true"></div>
+            <a href="#" className="nav-brand" onClick={(e) => handleNavClick(e, '#home')}>
+              GC <span>Pressure Wash</span>
+            </a>
             <ul className={`nav-menu ${menuOpen ? 'active' : ''}`} id="nav-menu" ref={navMenuRef}>
               {navLinks.map((link) => (
                 <li key={link.href}>
