@@ -511,8 +511,8 @@ function App() {
                     <div className="service-card-content">
                       <h3 className="service-name">{service.title}</h3>
                       <p className="service-desc-text">{service.description}</p>
-                      <button className="btn-book-now" onClick={() => handleBookNow(service.message)}>
-                        Book Now
+                      <button className="btn-book-now btn-whatsapp" onClick={() => handleBookNow(service.message)}>
+                        <i className="fa-brands fa-whatsapp"></i> Book via WhatsApp
                       </button>
                     </div>
                   </div>
@@ -807,7 +807,7 @@ function App() {
                   <div className="contact-item" key={detail.title}>
                     <div className="contact-icon">
                       <i className={detail.icon}></i>
-      </div>
+                    </div>
                     <div>
                       <h4>{detail.title}</h4>
                       {detail.lines.map((line) =>
@@ -936,10 +936,18 @@ function App() {
         <i className="fa-solid fa-arrow-up"></i>
       </button>
 
-      <a href="https://wa.me/16475441491" className="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-        <i className="fab fa-whatsapp"></i>
+      <a 
+        href="https://wa.me/16475441491?text=Hi%2C%20I%27m%20interested%20in%20your%20pressure%20washing%20services." 
+        className="whatsapp-fab" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        aria-label="Chat on WhatsApp"
+      >
+        <i className="fa-brands fa-whatsapp"></i>
+        <span className="whatsapp-tooltip">Chat with us!</span>
       </a>
     </>
+
   )
 }
 
