@@ -105,10 +105,10 @@ const serviceCategories = [
 ]
 
 const whyChooseUs = [
-  { text: 'Mobile convenience – we come to your location' },
-  { text: 'Professional-grade equipment & eco-safe cleaning' },
-  { text: 'Fast turnaround & friendly service' },
-  { text: 'Serving residential, commercial, and agricultural clients' },
+  { text: 'Mobile convenience – we come to your location', icon: 'fa-solid fa-truck-fast' },
+  { text: 'Professional-grade equipment & eco-safe cleaning', icon: 'fa-solid fa-pump-soap' },
+  { text: 'Fast turnaround & friendly service', icon: 'fa-solid fa-stopwatch' },
+  { text: 'Serving residential, commercial, and agricultural clients', icon: 'fa-solid fa-city' },
 ]
 
 const projectImages = [
@@ -561,7 +561,7 @@ function App() {
             {whyChooseUs.map((item, index) => (
               <div className="why-choose-item" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
                 <div className="why-choose-icon">
-                  <i className="fa-solid fa-circle-check"></i>
+                  <i className={item.icon}></i>
                 </div>
                 <p className="why-choose-text">{item.text}</p>
               </div>
@@ -893,6 +893,32 @@ function App() {
                 <i className="fa-brands fa-whatsapp"></i>
               </button>
             </form>
+          </div>
+        </div>
+      </section>
+
+      <section className="service-area-map">
+        <div className="container">
+          <div className="section-header" data-aos="fade-up">
+            <span className="section-badge">Service Area</span>
+            <h2 className="section-title">Serving Cornwall & Surroundings</h2>
+            <p className="section-description">We cover a 100km radius around Cornwall, Ontario. If you're within an hour's drive, we'll be there!</p>
+          </div>
+          <div className="map-wrapper" data-aos="zoom-in">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d360453.7326767873!2d-75.0582626446154!3d45.02122777777626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc17d1c6472071%3A0x5037b28c7231630!2sCornwall%2C%20ON!5e0!3m2!1sen!2sca!4v1700000000000!5m2!1sen!2sca" 
+              width="100%" 
+              height="500" 
+              style={{ border: 0 }} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Service Area Map"
+            ></iframe>
+            <div className="map-overlay-text">
+              <i className="fa-solid fa-location-dot"></i>
+              <span>100km Service Radius</span>
+            </div>
           </div>
         </div>
       </section>
