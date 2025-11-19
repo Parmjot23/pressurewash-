@@ -14,6 +14,8 @@ import semiTruckWash1 from './assets/semi truck wash.jpg'
 import semiTruckWash2 from './assets/semi truck wash 2.jpg'
 import semiTruckWash3 from './assets/semi truck wash 3.jpg'
 import drivewayImage from './assets/driveway.jpg'
+import farmCleaningImage from './assets/farm_cleaning.png'
+import heavyDutyImage from './assets/heavy_duty.png'
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -88,7 +90,7 @@ const serviceCategories = [
     title: 'Heavy Equipment Wash',
     description: 'Specialized cleaning for construction and industrial machinery to maintain performance.',
     message: 'Hi, I would like to book a Heavy Equipment Wash service.',
-    image: 'https://images.unsplash.com/photo-1584650549334-6cc0243056ef?w=800',
+    image: heavyDutyImage,
     tagline: 'Degrease & Protect',
     duration: 'Project-based'
   },
@@ -96,7 +98,7 @@ const serviceCategories = [
     title: 'Farm Equipment Wash',
     description: 'On-site washing for tractors, combines, and other agricultural equipment.',
     message: 'Hi, I would like to book a Farm Equipment Wash service.',
-    image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800',
+    image: farmCleaningImage,
     tagline: 'Field-Ready Clean',
     duration: 'On-site visit'
   },
