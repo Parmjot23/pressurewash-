@@ -682,18 +682,12 @@ function App() {
           <div className="about-wrapper">
             <div className="about-image" data-aos="fade-right">
               <img src={trustedExpertsImage} alt="Professional team" />
-              <div className="about-badge">
-                <div className="badge-content">
-                  <h3>15+</h3>
-                  <p>Years of Excellence</p>
-                </div>
-              </div>
             </div>
             <div className="about-content" data-aos="fade-left">
               <span className="section-badge">About Us</span>
               <h2 className="section-title">Your Trusted Pressure Washing Experts</h2>
               <p className="about-text">
-                With over 15 years of experience, we&apos;ve perfected the art of pressure washing. Our team of certified professionals uses
+                With extensive experience, we&apos;ve perfected the art of pressure washing. Our team of certified professionals uses
                 state-of-the-art equipment and eco-friendly solutions to deliver exceptional results every time.
               </p>
               <p className="about-text">
