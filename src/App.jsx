@@ -18,7 +18,6 @@ import drivewayImage from './assets/driveway.jpg'
 const navLinks = [
   { label: 'Home', href: '#home' },
   { label: 'Services', href: '#services' },
-  { label: 'Gallery', href: '#gallery' },
   { label: 'About', href: '#about' },
   { label: 'Testimonials', href: '#testimonials' },
   { label: 'Contact', href: '#contact' },
@@ -47,24 +46,45 @@ const serviceSpotlight = {
 const serviceCategories = [
   {
     title: 'Truck & Trailer Wash',
+    description: 'Comprehensive exterior cleaning for semi-trucks and trailers, removing road grime and salt.',
+    message: 'Hi, I would like to book a Truck & Trailer Wash service.',
+    image: fleetTruckImage
   },
   {
     title: 'Car Wash',
+    description: 'Professional mobile car wash service at your location for a showroom shine.',
+    message: 'Hi, I would like to book a Car Wash service.',
+    image: carDetailingImage
   },
   {
     title: 'Driveway Wash',
+    description: 'High-pressure cleaning to remove oil stains, tire marks, and dirt from your driveway.',
+    message: 'Hi, I would like to book a Driveway Wash service.',
+    image: concreteDrivewayImage
   },
   {
     title: 'Concrete Surface Cleaning',
+    description: 'Deep cleaning for patios, walkways, and other concrete surfaces to restore their look.',
+    message: 'Hi, I would like to book a Concrete Surface Cleaning service.',
+    image: commercialPropertyImage
   },
   {
     title: 'Building Exterior Wash',
+    description: 'Soft wash and pressure wash techniques to clean siding, brick, and stucco exteriors.',
+    message: 'Hi, I would like to book a Building Exterior Wash service.',
+    image: houseExteriorImage
   },
   {
     title: 'Heavy Equipment Wash',
+    description: 'Specialized cleaning for construction and industrial machinery to maintain performance.',
+    message: 'Hi, I would like to book a Heavy Equipment Wash service.',
+    image: 'https://images.unsplash.com/photo-1584650549334-6cc0243056ef?w=800'
   },
   {
     title: 'Farm Equipment Wash',
+    description: 'On-site washing for tractors, combines, and other agricultural equipment.',
+    message: 'Hi, I would like to book a Farm Equipment Wash service.',
+    image: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800'
   },
 ]
 
@@ -331,6 +351,11 @@ function App() {
     window.open(whatsappUrl, '_blank')
   }
 
+  const handleBookNow = (message) => {
+    const whatsappUrl = `https://wa.me/16475441491?text=${encodeURIComponent(message)}`
+    window.open(whatsappUrl, '_blank')
+  }
+
   const handleNavClick = (event, selector) => {
     event.preventDefault()
     const target = document.querySelector(selector)
@@ -477,17 +502,19 @@ function App() {
             </div>
             
             <div className="services-list-column" data-aos="fade-left">
-              <div className="services-grid-simple">
+              <div className="services-grid-cards">
                 {serviceCategories.map((service, index) => (
-                  <div className="service-item-simple" key={service.title}>
-                    <div className="service-bullet">
-                      <i className="fa-solid fa-check"></i>
+                  <div className="service-card" key={service.title}>
+                    <div className="service-card-image">
+                      <img src={service.image} alt={service.title} />
                     </div>
-                    <div className="service-name-wrapper">
+                    <div className="service-card-content">
                       <h3 className="service-name">{service.title}</h3>
-                      {service.subtitle && <span className="service-subtitle">{service.subtitle}</span>}
+                      <p className="service-desc-text">{service.description}</p>
+                      <button className="btn-book-now" onClick={() => handleBookNow(service.message)}>
+                        Book Now
+                      </button>
                     </div>
-                    {service.badge && <span className="service-badge-simple">{service.badge}</span>}
                   </div>
                 ))}
               </div>
@@ -622,42 +649,6 @@ function App() {
           </div>
         </div>
       )}
-
-      <section className="gallery" id="gallery">
-        <div className="container">
-          <div className="section-header" data-aos="fade-up">
-            <span className="section-badge">Our Work</span>
-            <h2 className="section-title">See The Transformation</h2>
-            <p className="section-description">Real results from our satisfied customers</p>
-          </div>
-          <div className="gallery-grid">
-            {galleryItems.map((item, index) => (
-              <div className="gallery-item" key={item.title} data-aos="zoom-in" data-aos-delay={index * 100}>
-                <div className="before-after">
-                  <img src={item.before} alt={`${item.title} before cleaning`} />
-                  <div className="comparison-slider">
-                    <img src={item.after} alt={`${item.title} after cleaning`} className="after-image" />
-                    <div className="slider-line">
-                      <div className="slider-button">
-                        <i className="fa-solid fa-chevron-left"></i>
-                        <i className="fa-solid fa-chevron-right"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="gallery-labels">
-                    <span className="label-before">Before</span>
-                    <span className="label-after">After</span>
-                  </div>
-                </div>
-                <div className="gallery-info">
-                  <h4>{item.title}</h4>
-                  <p>{item.subtitle}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="about" id="about">
         <div className="container">

@@ -686,130 +686,96 @@ img, video {
     flex: 1.2;
 }
 
-.services-grid-simple {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    position: relative;
-    z-index: 1;
+.services-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     width: 100%;
 }
 
-.service-item-simple {
+.service-card {
     background: var(--white);
-    border-radius: 16px;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    border: 2px solid rgba(107, 70, 193, 0.15);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-    width: 100%;
-}
-
-.service-item-simple::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: var(--gradient-primary);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-item-simple:hover {
-    transform: translateX(8px);
-    border-color: rgba(107, 70, 193, 0.4);
-    box-shadow: 0 8px 30px rgba(107, 70, 193, 0.15);
-    background: linear-gradient(135deg, rgba(107, 70, 193, 0.02) 0%, rgba(139, 92, 246, 0.02) 100%);
-}
-
-.service-item-simple:hover::before {
-    transform: scaleY(1);
-}
-
-.service-bullet {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, rgba(107, 70, 193, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-    border: 2px solid rgba(107, 70, 193, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.service-item-simple:hover .service-bullet {
-    background: var(--gradient-primary);
-    border-color: transparent;
-    transform: scale(1.1);
-    box-shadow: 0 4px 16px rgba(107, 70, 193, 0.3);
-}
-
-.service-bullet i {
-    color: var(--primary-color);
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-}
-
-.service-item-simple:hover .service-bullet i {
-    color: var(--white);
-    transform: scale(1.1);
-}
-
-.service-name-wrapper {
-    flex: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(107, 70, 193, 0.1);
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(107, 70, 193, 0.15);
+    border-color: rgba(107, 70, 193, 0.3);
+}
+
+.service-card-image {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-card-image img {
+    transform: scale(1.1);
+}
+
+.service-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
 }
 
 .service-name {
+    font-size: 1.3rem;
     margin: 0;
-    font-size: 1.15rem;
     color: var(--dark-color);
     font-weight: 700;
-    transition: color 0.3s ease;
-    line-height: 1.3;
 }
 
-.service-item-simple:hover .service-name {
-    color: var(--primary-color);
-}
-
-.service-subtitle {
-    font-size: 0.8rem;
+.service-desc-text {
+    font-size: 0.95rem;
     color: var(--text-light);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    line-height: 1.6;
+    flex: 1;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.service-badge-simple {
-    padding: 0.35rem 0.9rem;
-    border-radius: 20px;
+.btn-book-now {
+    padding: 0.8rem 1.2rem;
     background: var(--gradient-primary);
     color: var(--white);
-    font-size: 0.7rem;
-    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(107, 70, 193, 0.2);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(107, 70, 193, 0.3);
-    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: auto;
 }
 
-.service-item-simple:hover .service-badge-simple {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(107, 70, 193, 0.4);
+.btn-book-now:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(107, 70, 193, 0.3);
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
 }
 
 /* ==========================================
