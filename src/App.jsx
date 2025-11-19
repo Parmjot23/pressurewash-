@@ -206,7 +206,7 @@ const testimonials = [
 ]
 
 const contactDetails = [
-  { icon: 'fa-solid fa-phone', title: 'Phone', lines: ['(123) 456-7890'], link: 'tel:+1234567890' },
+  { icon: 'fa-solid fa-phone', title: 'Phone', lines: ['(647) 544-1491'], link: 'tel:+16475441491' },
   { icon: 'fa-solid fa-envelope', title: 'Email', lines: ['info@gcpressurewash.com'], link: 'mailto:info@gcpressurewash.com' },
   { icon: 'fa-solid fa-location-dot', title: 'Address', lines: ['123 Main Street, Your City, ST 12345'] },
   { icon: 'fa-solid fa-clock', title: 'Business Hours', lines: ['Mon-Sat: 7AM - 7PM', 'Sunday: 9AM - 5PM'] },
@@ -315,6 +315,21 @@ function App() {
       document.removeEventListener('keydown', handleEsc)
     }
   }, [menuOpen])
+
+  const handleWhatsAppSubmit = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    const name = formData.get('name')
+    const email = formData.get('email')
+    const phone = formData.get('phone')
+    const service = formData.get('service')
+    const message = formData.get('message')
+
+    const whatsappMessage = `Hi, I'm ${name}. I'm interested in ${service}.%0A%0A${message}%0A%0AYou can reach me at ${phone} or ${email}.`
+    const whatsappUrl = `https://wa.me/16475441491?text=${whatsappMessage}`
+
+    window.open(whatsappUrl, '_blank')
+  }
 
   const handleNavClick = (event, selector) => {
     event.preventDefault()
@@ -779,9 +794,9 @@ function App() {
                   <i className="fa-solid fa-calendar"></i>
                   <span>Schedule Now</span>
                 </button>
-                <a href="tel:+1234567890" className="btn btn-outline-white btn-large">
+                <a href="tel:+16475441491" className="btn btn-outline-white btn-large">
                   <i className="fa-solid fa-phone"></i>
-                  <span>Call (123) 456-7890</span>
+                  <span>Call (647) 544-1491</span>
                 </a>
               </div>
             </div>
@@ -825,7 +840,7 @@ function App() {
                 ))}
               </div>
             </div>
-            <form className="contact-form" data-aos="fade-left">
+            <form className="contact-form" data-aos="fade-left" onSubmit={handleWhatsAppSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Full Name</label>
                 <input type="text" id="name" name="name" placeholder="John Smith" required />
@@ -837,7 +852,7 @@ function App() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="phone">Phone</label>
-                  <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" required />
+                  <input type="tel" id="phone" name="phone" placeholder="(647) 544-1491" required />
                 </div>
               </div>
               <div className="form-group">
@@ -855,9 +870,9 @@ function App() {
                 <label htmlFor="message">Message</label>
                 <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
               </div>
-              <button type="submit" className="btn btn-primary btn-large btn-full">
-                <span>Send Message</span>
-                <i className="fa-solid fa-paper-plane"></i>
+              <button type="submit" className="btn btn-primary btn-large btn-full" style={{ background: '#25D366', borderColor: '#25D366' }}>
+                <span>Send via WhatsApp</span>
+                <i className="fa-brands fa-whatsapp"></i>
               </button>
             </form>
           </div>
@@ -895,7 +910,7 @@ function App() {
               <h4>Contact</h4>
               <ul>
                 <li>
-                  <a href="tel:+1234567890">(123) 456-7890</a>
+                  <a href="tel:+16475441491">(647) 544-1491</a>
                 </li>
                 <li>
                   <a href="mailto:info@gcpressurewash.com">info@gcpressurewash.com</a>
@@ -930,7 +945,7 @@ function App() {
         <i className="fa-solid fa-arrow-up"></i>
       </button>
 
-      <a href="https://wa.me/1234567890" className="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <a href="https://wa.me/16475441491" className="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
         <i className="fab fa-whatsapp"></i>
       </a>
     </>
