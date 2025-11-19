@@ -242,8 +242,8 @@ const testimonials = [
 ]
 
 const contactDetails = [
-  { icon: 'fa-solid fa-phone', title: 'Phone', lines: ['(647) 544-1491'], link: 'tel:+16475441491' },
-  { icon: 'fa-solid fa-envelope', title: 'Email', lines: ['info@gcpressurewash.com'], link: 'mailto:info@gcpressurewash.com' },
+  { icon: 'fa-solid fa-phone', title: 'Phone', lines: ['(613) 861-5179'], link: 'tel:+16138615179' },
+  { icon: 'fa-solid fa-envelope', title: 'Email', lines: ['Rsgroup998@gmail.com'], link: 'mailto:Rsgroup998@gmail.com' },
   { icon: 'fa-solid fa-location-dot', title: 'Address', lines: ['123 Main Street, Your City, ST 12345'] },
   { icon: 'fa-solid fa-clock', title: 'Business Hours', lines: ['Mon-Sat: 7AM - 7PM', 'Sunday: 9AM - 5PM'] },
 ]
@@ -362,13 +362,13 @@ function App() {
     const message = formData.get('message')
 
     const whatsappMessage = `Hi, I'm ${name}. I'm interested in ${service}.%0A%0A${message}%0A%0AYou can reach me at ${phone} or ${email}.`
-    const whatsappUrl = `https://wa.me/16475441491?text=${whatsappMessage}`
+    const whatsappUrl = `https://wa.me/16138615179?text=${whatsappMessage}`
 
     window.open(whatsappUrl, '_blank')
   }
 
   const handleBookNow = (message) => {
-    const whatsappUrl = `https://wa.me/16475441491?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/16138615179?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
 
@@ -812,9 +812,9 @@ function App() {
                   <i className="fa-solid fa-calendar"></i>
                   <span>Schedule Now</span>
                 </button>
-                <a href="tel:+16475441491" className="btn btn-outline-white btn-large">
+                <a href="tel:+16138615179" className="btn btn-outline-white btn-large">
                   <i className="fa-solid fa-phone"></i>
-                  <span>Call (647) 544-1491</span>
+                  <span>Call (613) 861-5179</span>
                 </a>
               </div>
             </div>
@@ -870,7 +870,7 @@ function App() {
                 </div>
                 <div className="form-group">
                   <label htmlFor="phone">Phone</label>
-                  <input type="tel" id="phone" name="phone" placeholder="(647) 544-1491" required />
+                  <input type="tel" id="phone" name="phone" placeholder="(613) 861-5179" required />
                 </div>
               </div>
               <div className="form-group">
@@ -954,10 +954,10 @@ function App() {
               <h4>Contact</h4>
               <ul>
                 <li>
-                  <a href="tel:+16475441491">(647) 544-1491</a>
+                  <a href="tel:+16138615179">(613) 861-5179</a>
                 </li>
                 <li>
-                  <a href="mailto:info@gcpressurewash.com">info@gcpressurewash.com</a>
+                  <a href="mailto:Rsgroup998@gmail.com">Rsgroup998@gmail.com</a>
                 </li>
                 <li>123 Main Street, Your City, ST 12345</li>
               </ul>
@@ -990,7 +990,7 @@ function App() {
       </button>
 
       <a 
-        href="https://wa.me/16475441491?text=Hi%2C%20I%27m%20interested%20in%20your%20pressure%20washing%20services." 
+        href="https://wa.me/16138615179?text=Hi%2C%20I%27m%20interested%20in%20your%20pressure%20washing%20services."
         className="whatsapp-fab" 
         target="_blank" 
         rel="noopener noreferrer" 
