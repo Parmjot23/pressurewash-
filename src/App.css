@@ -471,9 +471,9 @@ video {
    BRAND SHOWCASE
    ========================================== */
 .brand-highlight {
-    padding: calc(var(--header-offset) + 20px) 0 80px;
+    padding: var(--header-offset) 0 80px;
     margin-top: 0;
-    scroll-margin-top: calc(var(--header-offset) + 20px);
+    scroll-margin-top: var(--header-offset);
     background:
         radial-gradient(circle at 20% 30%, rgba(107, 70, 193, 0.25) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.2) 0%, transparent 50%),
@@ -532,8 +532,8 @@ video {
     }
 
     .brand-highlight {
-        padding: calc(var(--header-offset) + 16px) 0 72px;
-        scroll-margin-top: calc(var(--header-offset) + 16px);
+        padding: var(--header-offset) 0 72px;
+        scroll-margin-top: var(--header-offset);
     }
 }
 
@@ -755,7 +755,7 @@ video {
 
 .service-card-media {
     position: relative;
-    height: 220px;
+    height: 260px;
     margin: 1.25rem 1.25rem 0;
     border-radius: 18px;
     overflow: hidden;
