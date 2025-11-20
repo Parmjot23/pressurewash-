@@ -244,7 +244,6 @@ const testimonials = [
 const contactDetails = [
   { icon: 'fa-solid fa-phone', title: 'Phone', lines: ['(613) 861-5179'], link: 'tel:+16138615179' },
   { icon: 'fa-solid fa-envelope', title: 'Email', lines: ['Rsgroup998@gmail.com'], link: 'mailto:Rsgroup998@gmail.com' },
-  { icon: 'fa-solid fa-location-dot', title: 'Address', lines: ['123 Main Street, Your City, ST 12345'] },
   { icon: 'fa-solid fa-clock', title: 'Business Hours', lines: ['Mon-Sat: 7AM - 7PM', 'Sunday: 9AM - 5PM'] },
 ]
 
