@@ -952,7 +952,6 @@ function App() {
                 <li>
                   <a href="mailto:Rsgroup998@gmail.com">Rsgroup998@gmail.com</a>
                 </li>
-                <li>123 Main Street, Your City, ST 12345</li>
               </ul>
               <div className="footer-social" style={{ marginTop: '1.5rem' }}>
                 {socialLinks.slice(0, 4).map((social) => (
