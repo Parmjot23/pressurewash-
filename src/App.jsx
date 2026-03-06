@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import './App.css'
 import logoImage from './assets/logo.jpg'
 import heroImage from './assets/image.png'
@@ -16,6 +16,13 @@ import semiTruckWash3 from './assets/semi truck wash 3.jpg'
 import drivewayImage from './assets/driveway.jpg'
 import farmCleaningImage from './assets/farm_cleaning.png'
 import heavyDutyImage from './assets/heavy_duty.png'
+
+const statsData = [
+  { value: 500, suffix: '+', label: 'Projects Completed' },
+  { value: 98, suffix: '%', label: 'Client Satisfaction' },
+  { value: 10, suffix: '+', label: 'Years Experience' },
+  { value: 100, suffix: 'km', label: 'Service Radius' },
+]
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -255,6 +262,67 @@ const socialLinks = [
   { icon: 'fa-brands fa-youtube', label: 'YouTube', href: '#' },
 ]
 
+function AnimatedCounter({ value, suffix, duration = 2000 }) {
+  const [count, setCount] = useState(0)
+  const [hasStarted, setHasStarted] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasStarted) {
+          setHasStarted(true)
+        }
+      },
+      { threshold: 0.3 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [hasStarted])
+
+  useEffect(() => {
+    if (!hasStarted) return
+    let start = 0
+    const increment = value / (duration / 16)
+    const timer = setInterval(() => {
+      start += increment
+      if (start >= value) {
+        setCount(value)
+        clearInterval(timer)
+      } else {
+        setCount(Math.floor(start))
+      }
+    }, 16)
+    return () => clearInterval(timer)
+  }, [hasStarted, value, duration])
+
+  return (
+    <span ref={ref} className="counter-value">
+      {count}{suffix}
+    </span>
+  )
+}
+
+function useScrollReveal() {
+  const reveal = useCallback(() => {
+    const elements = document.querySelectorAll('.reveal')
+    elements.forEach((el) => {
+      const windowHeight = window.innerHeight
+      const elementTop = el.getBoundingClientRect().top
+      const revealPoint = 100
+      if (elementTop < windowHeight - revealPoint) {
+        el.classList.add('revealed')
+      }
+    })
+  }, [])
+
+  useEffect(() => {
+    reveal()
+    window.addEventListener('scroll', reveal, { passive: true })
+    return () => window.removeEventListener('scroll', reveal)
+  }, [reveal])
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
@@ -268,6 +336,8 @@ function App() {
   const navRef = useRef(null)
   const navMenuRef = useRef(null)
   const hamburgerRef = useRef(null)
+
+  useScrollReveal()
 
   useEffect(() => {
     document.body.classList.toggle('menu-open', menuOpen)
@@ -461,26 +531,44 @@ function App() {
       </nav>
 
       <section className="brand-highlight" id="home">
+        <div className="hero-particles">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
         <div className="hero-image-container">
           <img src={heroImage} alt="Mobile Pressure Washing" className="hero-main-image" />
         </div>
         <div className="brand-hero-wrapper">
-          <div className="brand-caption">
-            <p>
+          <div className="hero-headline">
+            <h1 className="hero-title">
+              <span className="hero-title-line">Premium</span>
+              <span className="hero-title-line hero-title-gradient">Pressure Washing</span>
+              <span className="hero-title-line">Services</span>
+            </h1>
+            <p className="hero-subtitle">
               Family-owned, detail obsessed, and trusted across residential, fleet, and commercial properties. We bring showroom-level clarity
               to every surface we touch.
             </p>
-            <div className="brand-tags">
-              <span>
-                <i className="fa-solid fa-city"></i> Urban &amp; Retail Sites
-              </span>
-              <span>
-                <i className="fa-solid fa-truck-fast"></i> Fleet &amp; Heavy Duty
-              </span>
-              <span>
-                <i className="fa-solid fa-house"></i> Luxury Residential
-              </span>
+            <div className="hero-cta-group">
+              <button className="btn btn-primary btn-large hero-btn-pulse" type="button" onClick={handleQuoteClick}>
+                <i className="fa-solid fa-bolt"></i>
+                <span>Get Free Quote</span>
+              </button>
+              <a href="tel:+16138615179" className="btn btn-outline-white btn-large">
+                <i className="fa-solid fa-phone"></i>
+                <span>(613) 861-5179</span>
+              </a>
             </div>
+          </div>
+          <div className="brand-tags">
+            <span>
+              <i className="fa-solid fa-city"></i> Urban &amp; Retail Sites
+            </span>
+            <span>
+              <i className="fa-solid fa-truck-fast"></i> Fleet &amp; Heavy Duty
+            </span>
+            <span>
+              <i className="fa-solid fa-house"></i> Luxury Residential
+            </span>
           </div>
         </div>
       </section>
@@ -495,6 +583,19 @@ function App() {
                   <h4>{feature.title}</h4>
                   <p>{feature.text}</p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="stats-section">
+        <div className="container">
+          <div className="stats-grid">
+            {statsData.map((stat) => (
+              <div className="stat-item reveal" key={stat.label}>
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                <span className="stat-label">{stat.label}</span>
               </div>
             ))}
           </div>
@@ -549,7 +650,7 @@ function App() {
         </div>
       </section>
 
-      <section className="why-choose-us">
+      <section className="why-choose-us reveal">
         <div className="container">
           <div className="section-header" data-aos="fade-up">
             <span className="section-badge">Why Choose Us?</span>
@@ -569,7 +670,7 @@ function App() {
         </div>
       </section>
 
-      <section className="video-showcase">
+      <section className="video-showcase reveal">
         <div className="container">
           <div className="section-header" data-aos="fade-up">
             <span className="section-badge">In Action</span>
@@ -632,7 +733,7 @@ function App() {
         </div>
       </section>
 
-      <section className="recent-projects">
+      <section className="recent-projects reveal">
         <div className="container">
           <div className="section-header" data-aos="fade-up">
             <span className="section-badge">Portfolio</span>
@@ -676,7 +777,7 @@ function App() {
         </div>
       )}
 
-      <section className="about" id="about">
+      <section className="about reveal" id="about">
         <div className="container">
           <div className="about-wrapper">
             <div className="about-image" data-aos="fade-right">
@@ -712,7 +813,7 @@ function App() {
         </div>
       </section>
 
-      <section className="process">
+      <section className="process reveal">
         <div className="container">
           <div className="section-header" data-aos="fade-up">
             <span className="section-badge">How It Works</span>
@@ -734,7 +835,7 @@ function App() {
         </div>
       </section>
 
-      <section className="testimonials" id="testimonials">
+      <section className="testimonials reveal" id="testimonials">
         <div className="container">
           <div className="section-header" data-aos="fade-up">
             <span className="section-badge">Testimonials</span>
@@ -752,6 +853,9 @@ function App() {
             >
               {testimonials.map((testimonial, index) => (
                 <div className="testimonial-card" key={testimonial.name} data-aos="fade-up" data-aos-delay={(index % 3) * 100}>
+                  <div className="testimonial-quote-icon">
+                    <i className="fa-solid fa-quote-left"></i>
+                  </div>
                   <div className="stars">
                     <i className="fa-solid fa-star"></i>
                     <i className="fa-solid fa-star"></i>
@@ -815,7 +919,7 @@ function App() {
         </div>
       </section>
 
-      <section className="contact" id="contact">
+      <section className="contact reveal" id="contact">
         <div className="container">
           <div className="contact-wrapper">
             <div className="contact-info" data-aos="fade-right">
@@ -890,7 +994,7 @@ function App() {
         </div>
       </section>
 
-      <section className="service-area-map">
+      <section className="service-area-map reveal">
         <div className="container">
           <div className="section-header" data-aos="fade-up">
             <span className="section-badge">Service Area</span>
